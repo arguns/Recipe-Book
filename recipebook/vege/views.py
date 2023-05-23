@@ -4,7 +4,7 @@ from .models import *
 # Create your views here.
 
 def recipes(request):
-    context = {'page':'Recipe'}
+
     if request.method=="POST":
         data = request.POST
 
@@ -20,4 +20,6 @@ def recipes(request):
 
         return redirect('/recipes/')
 
+    queryset = Recipe.objects.all()
+    context = {'page':'Recipe', 'Recipes':queryset}
     return render(request, 'recipes.html', context)

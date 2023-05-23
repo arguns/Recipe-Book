@@ -20,5 +20,27 @@
         <button type="submit" class="btn btn-success">Submit</button>
       </form>
 </div>
+<div class="container mt-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">SN</th>
+        <th scope="col">Recipe Name</th>
+        <th scope="col">Recipe Description</th>
+        <th scope="col">Recipe Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for rec in Recipes %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ rec.recipe_name }}</td>
+        <td>{{ rec.recipe_description }}</td>
+        <td>{{ rec.recipe_image }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 
 {% endblock %}
