@@ -28,6 +28,7 @@
         <th scope="col">Recipe Name</th>
         <th scope="col">Recipe Description</th>
         <th scope="col">Recipe Image</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -37,6 +38,7 @@
         <td>{{ rec.recipe_name }}</td>
         <td>{{ rec.recipe_description }}</td>
         <td><img src="{{ rec.recipe_image }}" alt=""></td>
+        <td><a class="btn btn-danger" href="/delete-recipe/{{rec.id}}">Delete</a></td>
       </tr>
       {% endfor %}
     </tbody>
