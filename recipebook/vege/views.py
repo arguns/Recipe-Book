@@ -17,7 +17,7 @@ def recipes(request):
             recipe_name = recipe_name,
             recipe_description = recipe_description,
         )
-
+ 
         return redirect('/recipes/')
 
     queryset = Recipe.objects.all()
