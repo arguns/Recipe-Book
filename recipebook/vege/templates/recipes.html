@@ -22,7 +22,7 @@
       </form>
 </div>
 <div class="container mt-5">
-  <table class="table">
+  <table class="table border border-2">
     <thead>
       <tr>
         <th scope="col">SN</th>
@@ -34,12 +34,13 @@
     </thead>
     <tbody>
       {% for rec in Recipes %}
-      <tr>
+      <tr class="border border-2">
         <th scope="row">{{ forloop.counter }}</th>
         <td>{{ rec.recipe_name }}</td>
         <td>{{ rec.recipe_description }}</td>
         <td><img src="{{ rec.recipe_image }}" alt="" style="height:2rem"></td>
-        <td><a class="btn btn-danger" href="/delete-recipe/{{rec.id}}">Delete</a></td>
+        <td><a class="btn btn-danger m-2" href="/delete-recipe/{{rec.id}}">Delete</a>
+          <a class="btn btn-success" href="/update-recipe/{{rec.id}}">Update</a></td>
       </tr>
       {% endfor %}
     </tbody>
