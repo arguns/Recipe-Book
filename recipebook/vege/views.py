@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib import messages
 from .models import *
 
 # Create your views here.
@@ -62,4 +64,37 @@ def user_login(request):
 
 def user_register(request):
 
-    return render(request, 'register.html')
+    if request.method == "POST":
+        
+        firstName = request.POST.get('firstName')
+        lastName = request.POST.get('lastName')
+        username = request.POST.get('Username')
+        password = request.POST.get('password')
+
+        user = User.objects.filter(username=username)
+        if user.exists():
+            messages.info(request, 'Username alraedy Exists')
+            return redirect('/register/')
+
+
+        user = User.objects.create(
+            first_name = firstName,
+            last_name = lastName,
+            username = username,
+            password = password
+        )
+        user.set_password(password)
+        user.save()
+
+
+        return redirect('/register/')
+
+    queryset = User.objects.all()
+    return render(request, 'register.html', context={'lists':queryset})
+
+def user_del(request,id):
+
+    user = User.objects.get(id=id)
+    user.delete()
+
+    return redirect('/register/')

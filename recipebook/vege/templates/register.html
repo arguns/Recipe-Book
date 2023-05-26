@@ -3,23 +3,62 @@
 {% block start %}
         
 <div>
-    <form class="col-3 mx-auto mt-3 card p-3 shadow-lg">
+    <form class="col-3 mx-auto mt-3 card p-3 shadow-lg" method="POST">
         {% csrf_token %}
         <div class="heading text-center">
             <h1>Register</h1>
         </div>
+
         <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Username</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <label for="exampleInputEmail1" class="form-label">First Name</label>
+        <input type="text" class="form-control" name="firstName" id="" aria-describedby="emailHelp">
         </div>
         
+        <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Last Name</label>
+        <input type="text" class="form-control" name="lastName" id="" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input type="text" class="form-control" name="Username" id="" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+        </div>
+
+        <p>Already have an account?<a class="ps-2" style="text-decoration:none;" href="/login/"> Login</a></p>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    
+    <table class="table">
+        
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Password</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+            {% for u in lists %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{u.first_name}}</td>
+            <td>{{u.last_name}}</td>
+            <td>{{u.username}}</td>
+            <td>{{u.password}}</td>
+            <td><a href="/delete-user/{{u.id}}" class="btn btn-danger">Delete</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
 </div>
 
 {% endblock %}
