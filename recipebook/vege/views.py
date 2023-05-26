@@ -52,3 +52,14 @@ def update_recipe(request, id):
 
         return redirect('/recipes/')
     return render(request,'update.html', context)
+
+
+
+def user_login(request):
+
+    return render(request, 'login.html')
+
+
+def user_register(request):
+
+    return render(request, 'register.html')
