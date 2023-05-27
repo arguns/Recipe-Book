@@ -67,18 +67,18 @@ def user_login(request):
 
         if not User.objects.filter(username=username).exists():
             messages.error(request,"invalid username")
-            return redirect('login/')
+            return redirect('/login/')
         
         user = authenticate(username=username, password=password)
 
         if user is None:
             messages.error(request,'Invalid Account')
-            return redirect('login/')
+            return redirect('/login/')
         else:
             login(request,user)
-            return redirect('recipes/')
-
-    return render(request, 'login.html')
+            return redirect('/recipes/')
+    else:
+        return render(request, 'login.html')
 
 
 def user_register(request):
