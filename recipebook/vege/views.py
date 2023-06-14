@@ -78,7 +78,8 @@ def user_login(request):
             login(request,user)
             return redirect('/recipes/')
     else:
-        return render(request, 'login.html')
+        queryset = User.objects.all()
+        return render(request, 'login.html',context={'lists':queryset})
 
 
 def user_register(request):
