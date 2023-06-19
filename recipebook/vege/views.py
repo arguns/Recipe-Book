@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import *
 
@@ -111,6 +111,10 @@ def user_register(request):
 
     queryset = User.objects.all()
     return render(request, 'register.html', context={'lists':queryset})
+
+def logout_page(request):
+    logout(request)
+    return('/login')
 
 def user_del(request,id):
 
