@@ -61,7 +61,6 @@ def update_recipe(request, id):
     return render(request,'update.html', context)
 
 
-@login_required(login_url="/login/")
 def user_login(request):
 
     if request.method == "POST":
@@ -85,7 +84,6 @@ def user_login(request):
         queryset = User.objects.all()
         return render(request, 'login.html',context={'lists':queryset})
 
-@login_required(login_url="/login/")
 def user_register(request):
 
     if request.method == "POST":

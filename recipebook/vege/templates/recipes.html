@@ -42,8 +42,10 @@
         <td>{{ rec.recipe_name }}</td>
         <td>{{ rec.recipe_description }}</td>
         <td><img src="{{ rec.recipe_image }}" alt="" style="height:2rem"></td>
+       
         <td><a class="btn btn-danger m-2" href="/delete-recipe/{{rec.id}}">Delete</a>
           <a class="btn btn-success" href="/update-recipe/{{rec.id}}">Update</a></td>
+
       </tr>
       {% endfor %}
     </tbody>

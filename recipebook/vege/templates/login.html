@@ -29,7 +29,9 @@
             <th scope="col">Last Name</th>
             <th scope="col">Username</th>
             <th scope="col">Password</th>
+            {% if request.user.is_authenticated %} 
             <th scope="col">Action</th>
+            {% endif %}
           </tr>
         </thead>
         
@@ -41,7 +43,9 @@
             <td>{{u.last_name}}</td>
             <td>{{u.username}}</td>
             <td>{{u.password}}</td>
+            {% if request.user.is_authenticated %} 
             <td><a href="/delete-user/{{u.id}}" class="btn btn-danger">Delete</a></td>
+            {% endif %}
           </tr>
         {% endfor %}
         </tbody>
