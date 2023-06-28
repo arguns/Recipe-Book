@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import *
 
 # Create your views here.
 
+@login_required(login_url="/login/")
 def recipes(request):
 
     if request.method=="POST":
@@ -27,12 +29,14 @@ def recipes(request):
     context = {'page':'Recipe', 'Recipes':queryset}
     return render(request, 'recipes.html', context)
 
+@login_required(login_url="/login/")
 def delete_recipe(request, id):
     queryset = Recipe.objects.get(id=id)
     queryset.delete()
 
     return redirect('/recipes/')
 
+@login_required(login_url="/login/")
 def update_recipe(request, id):
 
     queryset = Recipe.objects.get(id=id)
@@ -57,7 +61,7 @@ def update_recipe(request, id):
     return render(request,'update.html', context)
 
 
-
+@login_required(login_url="/login/")
 def user_login(request):
 
     if request.method == "POST":
@@ -81,7 +85,7 @@ def user_login(request):
         queryset = User.objects.all()
         return render(request, 'login.html',context={'lists':queryset})
 
-
+@login_required(login_url="/login/")
 def user_register(request):
 
     if request.method == "POST":
@@ -114,8 +118,9 @@ def user_register(request):
 
 def logout_page(request):
     logout(request)
-    return('/login')
+    return redirect('/login')
 
+@login_required(login_url="/login/")
 def user_del(request,id):
 
     user = User.objects.get(id=id)

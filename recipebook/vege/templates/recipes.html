@@ -2,6 +2,9 @@
 {% block start %}
 
 <div class="container mt-5">
+    <nav>
+    <button class="btn btn-primary"><a href="/logout/" class="text-light" style="text-decoration:none;">Logout</a></button>
+    </nav>
     <form class="col-6 mx-auto p-5 card" method="post">
       {% csrf_token %}
         <h1 class="col-6 mx-auto text-center">Add Recipe</h1>
