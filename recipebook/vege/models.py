@@ -9,3 +9,10 @@ class Recipe(models.Model):
     recipe_description = models.TextField()
     recipe_image = models.ImageField(upload_to='img')
     recipe_view_count = models.IntegerField(default=1)
+
+class Department(models.Model):
+    pass
+
+class Student(models.Model):
+    
+    student_name = models.TextField()
